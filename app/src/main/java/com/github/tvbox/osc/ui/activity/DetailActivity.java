@@ -268,7 +268,7 @@ public class DetailActivity extends BaseActivity {
                                 .load(mVideo.pic)
                                 .transform(new RoundTransformation(mVideo.pic)
                                         .centerCorp(true)
-                                        .override(AutoSizeUtils.mm2px(mContext, 600), AutoSizeUtils.mm2px(mContext, 800))
+                                        .override(AutoSizeUtils.mm2px(mContext, 400), AutoSizeUtils.mm2px(mContext, 500))
                                         .roundRadius(AutoSizeUtils.mm2px(mContext, 10), RoundTransformation.RoundType.ALL))
                                 .placeholder(R.drawable.error_all_loading)
                                 .error(R.drawable.error_all_loading)
