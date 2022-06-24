@@ -93,15 +93,6 @@
                         android:textSize="18mm" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5mm"
-                        android:layout_marginRight="5mm"
-                        android:text="丨"
-                        android:textColor="@color/color_CCFFFFFF"
-                        android:textSize="18mm" />
-
-                    <TextView
                         android:id="@+id/tvType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
