@@ -36,6 +36,13 @@ public class GridAdapter extends BaseQuickAdapter<Movie.Video, BaseViewHolder> {
             tvYear.setText(String.valueOf(item.year));
             tvYear.setVisibility(View.VISIBLE);
         }
+        TextView tvLang = helper.getView(R.id.tvLang);
+        if (TextUtils.isEmpty(item.lang)) {
+            tvLang.setVisibility(View.GONE);
+        } else {
+            tvLang.setText(item.lang);
+            tvLang.setVisibility(View.VISIBLE);
+        }
         TextView tvArea = helper.getView(R.id.tvArea);
         if (TextUtils.isEmpty(item.area)) {
             tvArea.setVisibility(View.GONE);
