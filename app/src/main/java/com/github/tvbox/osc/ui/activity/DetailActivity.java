@@ -63,7 +63,6 @@ public class DetailActivity extends BaseActivity {
     private TextView tvYear;
     private TextView tvSite;
     private TextView tvArea;
-    private TextView tvLang;
     private TextView tvType;
     private TextView tvActor;
     private TextView tvDirector;
@@ -103,7 +102,6 @@ public class DetailActivity extends BaseActivity {
         tvYear = findViewById(R.id.tvYear);
         tvSite = findViewById(R.id.tvSite);
         tvArea = findViewById(R.id.tvArea);
-        tvLang = findViewById(R.id.tvLang);
         tvType = findViewById(R.id.tvType);
         tvActor = findViewById(R.id.tvActor);
         tvDirector = findViewById(R.id.tvDirector);
@@ -258,7 +256,6 @@ public class DetailActivity extends BaseActivity {
                     tvSite.setText(Html.fromHtml(getHtml("来源：", mVideo.sourceKey)));
                     tvYear.setText(Html.fromHtml(getHtml("年份：", String.valueOf(mVideo.year))));
                     tvArea.setText(Html.fromHtml(getHtml("地区：", mVideo.area)));
-                    tvLang.setText(Html.fromHtml(getHtml("语言：", mVideo.lang)));
                     tvType.setText(Html.fromHtml(getHtml("类型：", mVideo.type)));
                     tvActor.setText(Html.fromHtml(getHtml("演员：", mVideo.actor)));
                     tvDirector.setText(Html.fromHtml(getHtml("导演：", mVideo.director)));
