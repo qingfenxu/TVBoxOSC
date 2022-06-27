@@ -130,7 +130,7 @@ public class DetailActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startQuickSearch();
-                QuickSearchDialog quickSearchDialog = new QuickSearchDialog().build(DetailActivity.this);
+                QuickSearchDialog quickSearchDialog = new QuickSearchDialog(DetailActivity.this);
                 EventBus.getDefault().post(new RefreshEvent(RefreshEvent.TYPE_QUICK_SEARCH, quickSearchData));
                 EventBus.getDefault().post(new RefreshEvent(RefreshEvent.TYPE_QUICK_SEARCH_WORD, quickSearchWord));
                 quickSearchDialog.show();
@@ -254,6 +254,12 @@ public class DetailActivity extends BaseActivity {
 
                     tvName.setText(mVideo.name);
                     tvSite.setText(Html.fromHtml(getHtml("来源：", mVideo.sourceKey)));
+                    for (SourceBean sourceBean : ApiConfig.get().getSourceBeanList()) {
+                        if (sourceBean.getKey().equals(mVideo.sourceKey)) {
+                            tvSite.setText(Html.fromHtml(getHtml("来源：", sourceBean.getName())));
+                            break;
+                        }
+                    }
                     tvYear.setText(Html.fromHtml(getHtml("年份：", String.valueOf(mVideo.year))));
                     tvArea.setText(Html.fromHtml(getHtml("地区：", mVideo.area)));
                     tvType.setText(Html.fromHtml(getHtml("类型：", mVideo.type)));
@@ -322,6 +328,9 @@ public class DetailActivity extends BaseActivity {
     }
 
     private String getHtml(String label, String content) {
+        if (content == null) {
+            content = "";
+        }
         return label + "<font color=\"#FFFFFF\">" + content + "</font>";
     }
 
@@ -452,7 +461,7 @@ public class DetailActivity extends BaseActivity {
         searchRequestList.remove(home);
         searchRequestList.add(0, home);
         for (SourceBean bean : searchRequestList) {
-            if (!bean.isActive() || bean.isAddition()) {
+            if (!bean.isSearchable()) {
                 continue;
             }
             String key = bean.getKey();
